@@ -4,17 +4,39 @@
 
 插图！！！
 
+1. Management Network. Alcor server configures the group entries and the buckets in the group entries for each computing node. 
+Each group entry corresponds to a Zeta Gateway Cluster (ZGC). Each bucket in the group entry corresponds to a gateway in ZGC.
 
-
-
-1. Management Network. Alcor server configures the group table and the buckets in the group table for each computing node. 
-Each group table corresponds to a Zeta Gateway Cluster (ZGC). Each bucket in the group table corresponds to a gateway in ZGC.
-
-2. Gateway Network. The gateway node in ZGC is responsible for delivering the entries to the computing nodes when two VMs communicate for the first time.
+2. Gateway Network. The gateway node in ZGC is responsible for delivering the rules to ACA on computing nodes when two VMs communicate for the first time. 
+ACA as the openflow controller will install rules on ovs.
 
 == Bucketing System Design on Compute Node
 
+We configure a set of group rules in group table which is supported by OpenFlow on ovs. 
+The packet will match the VPC-id in the flow table to determine which group rule is used by this packet.
+Each group rule can be configured with a few buckets, and each bucket specifies a gateway node.
+Since the number of gateway clusters will not be too large, all the group tables related to the gateway cluster can be configured on the computing node.
+In this case, when a VM goes online, there is no need to spend time configuring the group rules for it.
+Thus, the number of buckets on each computing node is the same as the number of gateway cluster.
+After determining which group rule can handle the packet, the group rules support hash function to map a packet to a bucket. 
+Ths hash field cna be specified as source MAC, source IP, destination MAC and destination IP.
+
+
+TBD
+
+=== Example on openflow rules for bucketing and OAM packet send to ACA
+
+TBD
+
+
 == OAM Packet Usage and Handling
+
+TBD
+
+=== Worklow Diagram for Bucketing and OAM Handling.
+
+TBD
+
 
 
 
@@ -22,9 +44,15 @@ Each group table corresponds to a Zeta Gateway Cluster (ZGC). Each bucket in the
 
 === Goal State Message Change from Alcor Server to ACA
 
-=== Traffic Distribution among Bucket
+TBD
 
 === OAM Packet Handling
 
+TBD
+
 === Test Code Updates
+
+TBD
+
+== 
 
