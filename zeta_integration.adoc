@@ -1,0 +1,30 @@
+= Zeta Integration Design
+
+== Architecture Overview
+
+插图！！！
+
+
+
+
+1. Management Network. Alcor server configures the group table and the buckets in the group table for each computing node. 
+Each group table corresponds to a Zeta Gateway Cluster (ZGC). Each bucket in the group table corresponds to a gateway in ZGC.
+
+2. Gateway Network. The gateway node in ZGC is responsible for delivering the entries to the computing nodes when two VMs communicate for the first time.
+
+== Bucketing System Design on Compute Node
+
+== OAM Packet Usage and Handling
+
+
+
+== Code changes
+
+=== Goal State Message Change from Alcor Server to ACA
+
+=== Traffic Distribution among Bucket
+
+=== OAM Packet Handling
+
+=== Test Code Updates
+
