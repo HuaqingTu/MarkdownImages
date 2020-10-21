@@ -21,6 +21,13 @@ Thus, the number of buckets on each computing node is the same as the number of 
 After determining which group rule can handle the packet, the group rules support hash function to map a packet to a bucket. 
 Ths hash field cna be specified as source MAC, source IP, destination MAC and destination IP.
 
+插图！！
+
+We use an example to illustrate. As shown in the figure above, there are four VMs belonging to the same VPC. 
+VM1 on Host 1 initiates communication to VM3 on Host 2.
+Since this is the first communication between these two virtual machines, there is no direct path to VM3 on Host 1.
+The packet will first match the flow table on Host 1 to find group 1 on group table. 
+By hasing the MAC and IP values, ovs can know which gateway to send packets to.
 
 TBD
 
@@ -54,5 +61,4 @@ TBD
 
 TBD
 
-== 
 
